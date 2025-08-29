@@ -1,0 +1,78 @@
+<div class="projects-container">
+  <div class="projects-content">
+    <div class="projects-header">
+      <div>
+        <h1 class="animate-in">Projects</h1>
+      </div>
+    </div>
+    
+    <!-- Loading indicator -->
+    @if (loading) {
+      <div class="loading">
+        <div class="loading-spinner"></div>
+        <p>Loading repositories...</p>
+      </div>
+    }
+    
+    <!-- Error message -->
+    @if (error) {
+      <div class="error">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <p>{{ error }}</p>
+      </div>
+    }
+    
+    <!-- Repository list -->
+    @if (repositories.length > 0) {
+      <div class="repo-list">
+        <div class="repo-grid">
+          @for (repo of repositories; track $index) {
+            <div class="repo-card" (click)="fetchRepoDetails(repo.owner.login, repo.name)">
+              <div class="repo-header">
+                <h3>{{ repo.name }}</h3>
+                <div class="repo-stats">
+                  <span class="stars">⭐ {{ repo.stargazers_count }}</span>
+                  <span class="forks">🍴 {{ repo.forks_count }}</span>
+                </div>
+              </div>
+              
+              @if (repo.description) {
+                <p class="repo-description">{{ repo.description }}</p>
+              } @else {
+                <p class="repo-description empty">No description available</p>
+              }
+              
+              <div class="repo-footer">
+                @if (repo.language) {
+                  <span class="language-badge">{{ repo.language }}</span>
+                }
+                <a [href]="repo.html_url" target="_blank" class="view-link" (click)="$event.stopPropagation()">
+                  View on GitHub 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+    
+    <!-- No repositories message -->
+    @if (!loading && repositories.length === 0 && !error) {
+      <div class="no-repos">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+        <p>No repositories found. Try changing the username or check your connection.</p>
+      </div>
+    }
+  </div>
+</div>

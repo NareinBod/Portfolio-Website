@@ -1,0 +1,75 @@
+<div class="about-container">
+  <div class="about-content">
+    <div class="about-header">
+      <div>
+        <h1 class="animate-in" id="underline-hover">About Me</h1>
+        <p>Computer Science Student & Aspiring Software Developer</p>
+      </div>
+      <img src="/personal_pic.PNG" alt="Profile picture">
+    </div>
+    
+    <div class="experiences">
+      <h2 id="header" class="common-h2">Experience</h2>
+      @for (job of experiences; track job; let i = $index) {
+        <div class="experience-card">
+          <div class="details" (click)="toggleAccordion(i)" [class.active]="expandedIndex.includes(i)">
+            <img [src]="job.logo" alt="Company logo">
+            <h2>{{ job.title }}</h2>
+            <p id="date">{{ job.date }}</p>
+          </div>
+          <div class="description" [class.active]="expandedIndex.includes(i)">
+            <ul>
+              @for (line of job.description; track line) {
+                <li>{{ line }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="certifications">
+      <h2 class="common-h2">Certifications</h2>
+      <table>
+          <tr>
+            <th>Certification</th>
+            <th>Issuer</th>
+            <th>Date</th>
+            <th>View</th>
+          </tr>
+        @for (certification of certifications; track $index) {
+          <tr>
+            <td> <h5>{{certification.name}}</h5></td>
+            <td>{{certification.issuer}}</td>
+            <td>{{certification.date}}</td>
+            <td>
+              <a href="{{certification.url}}" target="_blank"></a>
+            </td>
+          </tr>
+        }
+      </table>
+    </div>
+    
+    <div class="about-section">
+      <h2 class="common-h2">Skills</h2>
+      <div class="interests-container">
+        @for (skill of skills; track $index) {
+          <span class="interest-tag">{{skill}}</span>
+        }
+      </div>
+    </div>
+   
+    <div class="about-section">
+      <h2 class="common-h2">Interests</h2>
+      <p>Beyond my academic pursuits, I've developed interests in various activities that help me maintain a balanced lifestyle:</p>
+      <div class="interests-container">
+        <span class="interest-tag">Software Development</span>
+        <span class="interest-tag">Web Technologies</span>
+        <span class="interest-tag">Machine Learning</span>
+        <span class="interest-tag">Cricket</span>
+        <span class="interest-tag">Table Tennis</span>
+        <span class="interest-tag">Video Games</span>
+      </div>
+    </div>
+  </div>
+</div>

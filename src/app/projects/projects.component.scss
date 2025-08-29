@@ -1,0 +1,956 @@
+body {
+  font-family: 'Poppins', 'Roboto', 'Segoe UI', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.center {
+  max-width: 800px;
+  width: 100%;
+  padding: 10px;
+  padding-left: 12px; /* Aligns with the N logo */
+}
+
+.projects-container {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.projects-content {
+  max-width: 800px;
+  width: 100%;
+  padding: 10px;
+  padding-left: 12px;
+}
+
+.projects-header {
+  margin-bottom: 3rem;
+  padding: 12px 0;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.projects-header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  color: #3366cc; /* Updated to match the blue theme */
+  position: relative;
+  display: inline-block;
+}
+
+.projects-header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 40%;
+  height: 3px;
+  background-color: #3366cc; /* Updated to match the blue theme */
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.projects-header h1:hover::after {
+  width: 100%;
+}
+
+.projects-header h1.animate-in {
+  animation: slideIn 0.8s ease-out;
+}
+
+/* Loading state */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
+  color: #636363;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(51, 102, 204, 0.2); /* Updated to match the blue theme */
+  border-radius: 50%;
+  border-top-color: #3366cc; /* Updated to match the blue theme */
+  animation: spin 1s infinite linear;
+  margin-bottom: 15px;
+}
+
+.loading p {
+  font-size: 16px;
+  color: #636363;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Error message */
+.error {
+  background-color: rgba(255, 76, 76, 0.1);
+  border-left: 4px solid #ff4c4c;
+  border-radius: 6px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #d32f2f;
+  margin: 20px 0;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.error svg {
+  min-width: 24px;
+  color: #ff4c4c;
+}
+
+.error p {
+  margin: 0;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Repository grid layout */
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  width: 100%;
+  animation: slideUp 0.8s ease-out;
+}
+
+/* Repository card */
+.repo-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  min-height: 180px;
+}
+
+.repo-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-color: rgba(51, 102, 204, 0.3); /* Updated to match the blue theme */
+}
+
+.repo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 10px;
+}
+
+.repo-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  color: #333;
+  line-height: 1.3;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.repo-stats {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.stars, .forks {
+  font-size: 14px;
+  color: #636363;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Inter', sans-serif;
+}
+
+.repo-description {
+  font-size: 15px;
+  color: #636363;
+  line-height: 1.5;
+  margin: 0 0 16px;
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+}
+
+.repo-description.empty {
+  color: #999;
+  font-style: italic;
+}
+
+.repo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.language-badge {
+  background-color: rgba(51, 102, 204, 0.1); /* Updated to match the blue theme */
+  color: #3366cc; /* Updated to match the blue theme */
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+}
+
+.view-link {
+  color: #3366cc; /* Updated to match the blue theme */
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.3s ease;
+}
+
+.view-link:hover {
+  transform: translateY(-2px);
+}
+
+.view-link svg {
+  transition: transform 0.3s ease;
+  width: 16px;
+  height: 16px;
+}
+
+.view-link:hover svg {
+  transform: rotate(-10deg);
+}
+
+/* No repositories message */
+.no-repos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 10px;
+  animation: fadeIn 0.8s ease-out;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.no-repos svg {
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.no-repos p {
+  font-size: 16px;
+  color: #636363;
+  max-width: 300px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive styles matching the first page */
+@media (max-width: 992px) {
+  .projects-content {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  
+  .projects-header h1 {
+    font-size: 2.6rem;
+  }
+
+  .repo-grid {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-container {
+    padding: 1rem;
+  }
+  
+  .projects-content {
+    padding-left: 0;
+    max-width: 95%;
+  }
+  
+  .projects-header {
+    margin-bottom: 2rem;
+  }
+  
+  .projects-header h1 {
+    font-size: 2.3rem;
+  }
+  
+  .repo-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .repo-card {
+    margin-bottom: 16px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .projects-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .projects-content {
+    padding: 5px;
+  }
+  
+  .projects-header h1 {
+    font-size: 2.1rem;
+  }
+
+  .repo-grid {
+    gap: 24px;
+    margin-bottom: 20px;
+  }
+
+  .repo-card {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 430px) {
+  .projects-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .projects-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .repo-card {
+    margin-bottom: 20px;
+    padding: 16px;
+  }
+  
+  .repo-header {
+    flex-direction: column;
+  }
+  
+  .repo-stats {
+    margin-top: 8px;
+  }
+  
+  .repo-footer {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 360px) {
+  .projects-header h1 {
+    font-size: 1.6rem;
+  }
+  
+  .repo-description {
+    font-size: 14px;
+  }
+  
+  .repo-header h3 {
+    font-size: 16px;
+  }
+}
+
+/* Landscape orientation fixes */
+@media (max-height: 500px) and (orientation: landscape) {
+  .projects-container {
+    min-height: calc(100vh - 50px);
+  }
+  
+  .projects-header {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .repo-card {
+    background-color: #222;
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+  
+  .repo-header h3 {
+    color: #f0f0f0;
+  }
+  
+  .repo-description {
+    color: #aaa;
+  }
+  
+  .repo-description.empty {
+    color: #666;
+  }
+  
+  .repo-footer {
+    border-top-color: rgba(255, 255, 255, 0.08);
+  }
+  
+  .language-badge {
+    background-color: rgba(102, 153, 255, 0.1);
+    color: #6699ff;
+  }
+  
+  .view-link {
+    color: #6699ff;
+  }
+  
+  .no-repos {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  .no-repos p {
+    color: #aaa;
+  }
+}
+
+// body {
+//   font-family: 'Poppins', 'Roboto', 'Segoe UI', sans-serif;
+//   padding: 0;
+//   margin: 0;
+//   box-sizing: border-box;
+// }
+
+// .main {
+//   min-height: calc(100vh - 70px);
+//   display: flex;
+//   justify-content: center;
+//   padding: 1rem;
+//   transition: background-color 0.3s ease, color 0.3s ease;
+//   width: 100%;
+//   max-width: 100%;
+//   margin: 0 auto;
+// }
+
+// .center {
+//   max-width: 800px;
+//   width: 100%;
+//   padding: 10px;
+//   padding-left: 12px; /* Aligns with the N logo */
+// }
+
+// .projects-container {
+//   min-height: calc(100vh - 70px);
+//   display: flex;
+//   justify-content: center;
+//   padding: 1rem;
+//   transition: background-color 0.3s ease, color 0.3s ease;
+//   width: 100%;
+//   max-width: 100%;
+//   margin: 0 auto;
+//   background-color: #f7faff; /* Added a very light blue background */
+// }
+
+// .projects-content {
+//   max-width: 800px;
+//   width: 100%;
+//   padding: 10px;
+//   padding-left: 12px;
+// }
+
+// .projects-header {
+//   margin-bottom: 3rem;
+//   padding: 12px 0;
+//   animation: fadeIn 0.8s ease-out;
+// }
+
+// .projects-header h1 {
+//   font-size: 3rem;
+//   margin-bottom: 1rem;
+//   font-weight: 700;
+//   font-family: 'Inter', 'Poppins', sans-serif;
+//   color: #3366cc;
+//   position: relative;
+//   display: inline-block;
+// }
+
+// .projects-header h1::after {
+//   content: '';
+//   position: absolute;
+//   bottom: -5px;
+//   left: 0;
+//   width: 40%;
+//   height: 3px;
+//   background-color: #3366cc;
+//   border-radius: 2px;
+//   transition: width 0.4s ease;
+// }
+
+// .projects-header h1:hover::after {
+//   width: 100%;
+// }
+
+// .projects-header h1.animate-in {
+//   animation: slideIn 0.8s ease-out;
+// }
+
+// /* Loading state */
+// .loading {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   padding: 50px 0;
+//   color: #636363;
+//   animation: fadeIn 0.8s ease-out;
+// }
+
+// .loading-spinner {
+//   width: 40px;
+//   height: 40px;
+//   border: 3px solid rgba(51, 102, 204, 0.2);
+//   border-radius: 50%;
+//   border-top-color: #3366cc;
+//   animation: spin 1s infinite linear;
+//   margin-bottom: 15px;
+// }
+
+// .loading p {
+//   font-size: 16px;
+//   color: #636363;
+//   font-family: 'Inter', sans-serif;
+// }
+
+// /* Error message */
+// .error {
+//   background-color: rgba(255, 76, 76, 0.1);
+//   border-left: 4px solid #ff4c4c;
+//   border-radius: 6px;
+//   padding: 16px;
+//   display: flex;
+//   align-items: center;
+//   gap: 12px;
+//   color: #d32f2f;
+//   margin: 20px 0;
+//   animation: fadeIn 0.8s ease-out;
+// }
+
+// .error svg {
+//   min-width: 24px;
+//   color: #ff4c4c;
+// }
+
+// .error p {
+//   margin: 0;
+//   font-size: 15px;
+//   font-family: 'Inter', sans-serif;
+// }
+
+// /* Repository grid layout */
+// .repo-grid {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+//   gap: 24px;
+//   width: 100%;
+//   animation: slideUp 0.8s ease-out;
+// }
+
+// /* Repository card */
+// .repo-card {
+//   background-color: #fff;
+//   border-radius: 10px;
+//   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+//   padding: 24px;
+//   transition: all 0.3s ease;
+//   cursor: pointer;
+//   display: flex;
+//   flex-direction: column;
+//   height: 100%;
+//   border: 1px solid rgba(51, 102, 204, 0.08); /* Light blue border */
+//   min-height: 180px;
+// }
+
+// .repo-card:hover {
+//   transform: translateY(-3px);
+//   box-shadow: 0 8px 20px rgba(51, 102, 204, 0.15); /* Blueish shadow on hover */
+//   border-color: rgba(51, 102, 204, 0.2);
+// }
+
+// .repo-header {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: flex-start;
+//   margin-bottom: 12px;
+//   gap: 10px;
+// }
+
+// .repo-header h3 {
+//   margin: 0;
+//   font-size: 18px;
+//   font-weight: 600;
+//   font-family: 'Inter', 'Poppins', sans-serif;
+//   color: #333;
+//   line-height: 1.3;
+//   overflow-wrap: break-word;
+//   word-break: break-word;
+// }
+
+// .repo-stats {
+//   display: flex;
+//   gap: 12px;
+//   flex-shrink: 0;
+// }
+
+// .stars, .forks {
+//   font-size: 14px;
+//   color: #636363;
+//   display: flex;
+//   align-items: center;
+//   gap: 4px;
+//   font-family: 'Inter', sans-serif;
+// }
+
+// .repo-description {
+//   font-size: 15px;
+//   color: #636363;
+//   line-height: 1.5;
+//   margin: 0 0 16px;
+//   flex: 1;
+//   font-family: 'Inter', sans-serif;
+// }
+
+// .repo-description.empty {
+//   color: #999;
+//   font-style: italic;
+// }
+
+// .repo-footer {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   margin-top: auto;
+//   padding-top: 16px;
+//   border-top: 1px solid rgba(51, 102, 204, 0.08); /* Light blue top border */
+// }
+
+// .language-badge {
+//   background-color: rgba(51, 102, 204, 0.08); /* Lighter blue background */
+//   color: #3366cc;
+//   padding: 6px 12px;
+//   border-radius: 30px;
+//   font-size: 13px;
+//   font-weight: 500;
+//   font-family: 'Inter', sans-serif;
+// }
+
+// .view-link {
+//   color: #3366cc;
+//   font-size: 14px;
+//   font-weight: 500;
+//   font-family: 'Inter', sans-serif;
+//   text-decoration: none;
+//   display: flex;
+//   align-items: center;
+//   gap: 5px;
+//   transition: all 0.3s ease;
+// }
+
+// .view-link:hover {
+//   transform: translateY(-2px);
+// }
+
+// .view-link svg {
+//   transition: transform 0.3s ease;
+//   width: 16px;
+//   height: 16px;
+// }
+
+// .view-link:hover svg {
+//   transform: rotate(-10deg);
+// }
+
+// /* No repositories message */
+// .no-repos {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   padding: 60px 0;
+//   text-align: center;
+//   background-color: rgba(51, 102, 204, 0.03); /* Very light blue background */
+//   border-radius: 10px;
+//   animation: fadeIn 0.8s ease-out;
+//   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+// }
+
+// .no-repos svg {
+//   color: #a0c0ff; /* Lighter blue */
+//   margin-bottom: 20px;
+// }
+
+// .no-repos p {
+//   font-size: 16px;
+//   color: #636363;
+//   max-width: 300px;
+//   font-family: 'Inter', sans-serif;
+// }
+
+// /* Animations */
+// @keyframes fadeIn {
+//   from { opacity: 0; }
+//   to { opacity: 1; }
+// }
+
+// @keyframes slideIn {
+//   from {
+//     opacity: 0;
+//     transform: translateX(-20px);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: translateX(0);
+//   }
+// }
+
+// @keyframes slideUp {
+//   from {
+//     opacity: 0;
+//     transform: translateY(20px);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }
+
+// @keyframes spin {
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
+
+// /* Responsive styles matching the first page */
+// @media (max-width: 992px) {
+//   .projects-content {
+//     max-width: 90%;
+//     margin: 0 auto;
+//   }
+  
+//   .projects-header h1 {
+//     font-size: 2.6rem;
+//   }
+// }
+
+// @media (max-width: 768px) {
+//   .projects-container {
+//     padding: 1rem;
+//   }
+  
+//   .projects-content {
+//     padding-left: 0;
+//     max-width: 95%;
+//   }
+  
+//   .projects-header {
+//     margin-bottom: 2rem;
+//   }
+  
+//   .projects-header h1 {
+//     font-size: 2.3rem;
+//   }
+  
+//   .repo-grid {
+//     grid-template-columns: 1fr;
+//     gap: 16px;
+//   }
+  
+//   .repo-card {
+//     padding: 20px;
+//   }
+// }
+
+// @media (max-width: 576px) {
+//   .projects-container {
+//     padding: 1rem 0.5rem;
+//   }
+  
+//   .projects-content {
+//     padding: 5px;
+//   }
+  
+//   .projects-header h1 {
+//     font-size: 2.1rem;
+//   }
+// }
+
+// @media (max-width: 430px) {
+//   .projects-container {
+//     padding: 1rem 0.5rem;
+//   }
+  
+//   .projects-header h1 {
+//     font-size: 1.8rem;
+//   }
+  
+//   .repo-card {
+//     padding: 16px;
+//   }
+  
+//   .repo-header {
+//     flex-direction: column;
+//   }
+  
+//   .repo-stats {
+//     margin-top: 8px;
+//   }
+  
+//   .repo-footer {
+//     flex-direction: column;
+//     gap: 12px;
+//     align-items: flex-start;
+//   }
+// }
+
+// @media (max-width: 360px) {
+//   .projects-header h1 {
+//     font-size: 1.6rem;
+//   }
+  
+//   .repo-description {
+//     font-size: 14px;
+//   }
+  
+//   .repo-header h3 {
+//     font-size: 16px;
+//   }
+// }
+
+// /* Landscape orientation fixes */
+// @media (max-height: 500px) and (orientation: landscape) {
+//   .projects-container {
+//     min-height: calc(100vh - 50px);
+//   }
+  
+//   .projects-header {
+//     margin-bottom: 1.5rem;
+//   }
+// }
+
+// /* Dark mode support */
+// @media (prefers-color-scheme: dark) {
+//   .projects-container {
+//     // background-color: #1a1f2c; /* Lighter dark mode background with blue tint */
+//     background-color: none;
+//   }
+
+//   .repo-card {
+//     background-color: #242a38; /* Lighter card background in dark mode */
+//     border-color: rgba(102, 153, 255, 0.1);
+//     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+//   }
+  
+//   .repo-card:hover {
+//     box-shadow: 0 8px 20px rgba(102, 153, 255, 0.2);
+//     border-color: rgba(102, 153, 255, 0.25);
+//   }
+  
+//   .repo-header h3 {
+//     color: #f0f0f0;
+//   }
+  
+//   .repo-description {
+//     color: #bbc5d9; /* Lighter text in dark mode */
+//   }
+  
+//   .repo-description.empty {
+//     color: #777f8e;
+//   }
+  
+//   .repo-footer {
+//     border-top-color: rgba(102, 153, 255, 0.08);
+//   }
+  
+//   .language-badge {
+//     background-color: rgba(102, 153, 255, 0.12);
+//     color: #6699ff;
+//   }
+  
+//   .view-link {
+//     color: #6699ff;
+//   }
+  
+//   .no-repos {
+//     background-color: rgba(102, 153, 255, 0.05);
+//     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+//   }
+  
+//   .no-repos svg {
+//     color: #485980;
+//   }
+  
+//   .no-repos p {
+//     color: #bbc5d9;
+//   }
+// }
