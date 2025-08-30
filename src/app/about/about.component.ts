@@ -6,6 +6,7 @@ interface Job {
   title: string;
   date: string;
   description: string[];
+  current?: boolean;
 }
 
 interface experience {
@@ -49,11 +50,8 @@ export class AboutComponent {
     logo: '/feng_chia.png',
     title: 'Research Assistant, Feng Chia Univeristy',
     date: 'Present',
-    description: [
-      'Contributed to the development and testing of an indoor mapping web application, identifying and correcting mapping errors to improve user accuracy and experience',
-      'Collaborated with cross-functional team members in daily stand-up meetings, providing updates, sharing feedback, and aligning on project goals',
-      'Performed functional and usability testing of the website, ensuring smooth performance across different platforms and assisting with bug tracking and resolution'
-    ]
+    description: [ '...'],
+    current: true
   },  
   {
     logo: '/dts.png',

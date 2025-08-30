@@ -3,4 +3,5 @@ export interface Job {
     title: string,
     date: string,
     description: string[]
+    current?: boolean;
 }
