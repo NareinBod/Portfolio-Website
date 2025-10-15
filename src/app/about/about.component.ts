@@ -45,45 +45,51 @@ export class AboutComponent {
   "SourceTree"
   ];
 
-  experiences: Job[] = [
+  // ...existing code...
+experiences: Job[] = [
   {
     logo: '/feng_chia.png',
-    title: 'Research Assistant, Feng Chia Univeristy',
-    date: 'Present',
-    description: [ '...'],
+    title: 'Research Assistant, Feng Chia University',
+    date: 'Aug 2025 - Present',
+    description: [
+      'Implemented and trained LeNet, ResNet, and U-Net architectures for classification and image segmentation tasks, achieving high pixel-level accuracy and gaining hands-on experience in deep learning pipelines.',
+      'Developed and debugged Python scripts to preprocess datasets, train models, and evaluate performance, improving model reliability and gaining experience in end-to-end neural network workflows.',
+      'Collaborated with a faculty mentor to design experiments and apply modern deep learning techniques, ensuring accurate results and enhancing research efficiency.'
+    ],
     current: true
-  },  
+  },
   {
     logo: '/dts.png',
-    title: 'DTS Ideas DevOps Worker, UC',
+    title: 'Digital Technology Solutions Worker, UC',
     date: 'May 2025 - Aug 2025',
     description: [
-      'Contributed to the development and testing of an indoor mapping web application, identifying and correcting mapping errors to improve user accuracy and experience',
-      'Collaborated with cross-functional team members in daily stand-up meetings, providing updates, sharing feedback, and aligning on project goals',
-      'Performed functional and usability testing of the website, ensuring smooth performance across different platforms and assisting with bug tracking and resolution'
+      'Validated Angular web application against CAD plan documents, integrating MapsIndoors and resolving inconsistencies, improving front-end reliability and testing accuracy.',
+      'Developed reusable UI components, enhancing responsiveness and usability while aligning with project requirements and gaining hands-on experience in modern web development.',
+      'Provided third-level support in an Agile environment, debugging code and optimizing performance to maintain high system stability.'
     ]
   },
-    {
-      logo: '/danlaw.png',
-      title: 'Software Applications Intern',
-      date: 'Jan 2025 - Apr 2025',
-      description: [
-        'Enhance an existing Angular application by creating new pages, modifying functionalities, and improving the designs to deliver responsive and user-friendly features',
-        'Author and maintain comprehensive API documentation using OpenAPI specification, ensuring clarity and accessibility for developers and stakeholders',
-        'Collaborate with other team members to troubleshoot, debug and deliver high-quality solutions while actively contributing to successful project outcomes'
-      ]
-    },
-    {
-      logo: '/uc.png',
-      title: 'Engineering Design Teaching Assistant',
-      date: 'Aug 2024 - Dec 2024',
-      description: [
-        'Assisted students during in-class activities and peer mentoring sessions, providing targeted assistance to enhance their understanding and engagement with course material',
-        'Collaborated with the teaching team to evaluate assignments, exams, and project demonstrations, ensuring fair and consistent grading while offering insights for continuous improvements',
-        'Facilitated hands-on learning experiences in the classroom, helping students apply theoretical knowledge through practical exercises and problem-solving activities'
-      ]
-    }
-  ];
+  {
+    logo: '/danlaw.png',
+    title: 'Software Applications Intern, Danlaw',
+    date: 'Jan 2025 - Apr 2025',
+    description: [
+      'Enhanced an Angular application by creating new pages, modifying functionalities, and implementing responsive, user-friendly features, improving front-end performance and usability.',
+      'Authored and maintained API documentation using OpenAPI, ensuring clarity and accessibility for developers and cross-functional teams.',
+      'Collaborated with team members to troubleshoot, debug, and deliver high-quality solutions, contributing to successful project outcomes and workflow efficiency.'
+    ]
+  },
+  {
+    logo: '/uc.png',
+    title: 'Engineering Design Teaching Assistant',
+    date: 'Aug 2024 - Dec 2024',
+    description: [
+      'Assisted students during in-class activities and peer mentoring sessions, providing targeted assistance to enhance their understanding and engagement with course material.',
+      'Collaborated with the teaching team to evaluate assignments, exams, and project demonstrations, ensuring fair and consistent grading while offering insights for continuous improvements.',
+      'Facilitated hands-on learning experiences in the classroom, helping students apply theoretical knowledge through practical exercises and problem-solving activities.'
+    ]
+  }
+];
+
 
   certifications: experience[] = [
     {

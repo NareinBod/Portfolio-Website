@@ -32,15 +32,14 @@
     <div class="experiences">
       <h2 id="header" class="common-h2">Experience</h2>
       @for (job of experiences; track job; let i = $index) {
-        @if (job.title !== "Research Assitant") {
-          <div class="experience-card">
+            <div class="experience-card">
             <div class="details" (click)="toggleAccordion(i)" [class.active]="expandedIndex.includes(i)">
               <img [src]="job.logo" alt="Company logo">
               <h2>{{ job.title }}</h2>
               <p id="date">{{ job.date }}</p>
           </div>
           <!-- Only show description if NOT current -->
-          <div class="description" [class.active]="expandedIndex.includes(i)" *ngIf="!job.current">
+          <div class="description" [class.active]="expandedIndex.includes(i)">
             <ul>
               @for (line of job.description; track line) {
                 <li>{{ line }}</li>
@@ -48,7 +47,6 @@
             </ul>
           </div>
         </div>
-      }
     }
   </div>
 
