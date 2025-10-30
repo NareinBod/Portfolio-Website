@@ -25,5 +25,5 @@ It serves as a central hub to showcase my skills, professional experience, and p
 | **Deployment** | **Vercel** |
 | **Email Service** | **EmailJS** |
 | **APIs Used** | **GitHub REST API** |
-| **Styling** | SCSS |
+| **Styling** | **SCSS** |
 
