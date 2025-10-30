@@ -27,30 +27,3 @@ It serves as a central hub to showcase my skills, professional experience, and p
 | **APIs Used** | **GitHub REST API** |
 | **Styling** | *(Add your CSS framework, e.g., Tailwind CSS, SCSS, or Bootstrap)* |
 
-## ⚙️ Development & Setup
-
-This section provides basic instructions for running the project locally.
-
-### Prerequisites
-
-* Node.js (LTS version recommended)
-* Angular CLI: Install globally via `npm install -g @angular/cli`
-
-### Installation
-
-1.  **Clone the repository:**
-    ```bash
-    git clone [Your Repository URL Here]
-    cd [Your Repository Name]
-    ```
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-3.  **Run the application:**
-    ```bash
-    ng serve
-    ```
-    The app will typically run at `http://localhost:4200/`.
-
----
