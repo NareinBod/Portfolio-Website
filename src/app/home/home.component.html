@@ -1,93 +1,102 @@
-@if(showSuccess) {
-  <div class="alert-box">
-    <div class="alert-content">
-      <span class="icon">✔</span>
-      <span class="message">The template has been updated successfully</span>
-    </div>
-  </div>
-}
-<div class="main">
-    <div class="center">
-      <div class="intro">
-        <h1 class="typing-text">Hi, this is Narein!</h1>
-        <p>I'm a computer science student at University of Cincinnati.</p>
+<main class="home-page">
+  <section class="hero-shell reveal" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <div class="availability reveal-soft">
+        <span class="status-dot" aria-hidden="true"></span>
+        Seeking software engineering internships
       </div>
-      
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/narein/" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-          </svg>
-          LinkedIn
-        </a>
-        
-        <a href="https://github.com/NareinBod" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-          </svg>
-          GitHub
-        </a>
-        
-        <a href="https://discord.com/users/trackwizard" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-          </svg>
-          Discord
-        </a>
-        
-        <a href="https://leetcode.com/u/XAHeYgd60S/" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-          </svg>
-          LeetCode
-        </a>
+
+      <p class="section-kicker reveal-soft">Computer Science - University of Cincinnati</p>
+      <h1 id="hero-title" class="split-title" aria-label="Narein Boddapati">
+        <span style="--i: 0">Narein</span>
+        <span style="--i: 1">Boddapati</span>
+      </h1>
+      <p class="hero-lede reveal-soft">
+        I build reliable Angular applications, API integrations, and ML research workflows with a focus on clear interfaces and practical engineering outcomes.
+      </p>
+
+      <div class="hero-actions reveal-soft" aria-label="Primary links">
+        <a class="btn btn-primary" href="/NAREIN_RESUME_2025.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
+        <a class="btn btn-secondary" routerLink="/projects">See Projects</a>
+        <a class="btn btn-secondary" href="https://github.com/NareinBod" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="btn btn-secondary" href="https://www.linkedin.com/in/narein/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
-      
-      <div class="location">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d198059.6461761638!2d-84.70577808599154!3d39.13646786109116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884051b1de3821f9%3A0x69fb7e8be4c09317!2sCincinnati%2C%20OH!5e0!3m2!1sen!2sus!4v1742237485124!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-      <div class="email">
-        <div class="email-content">
-          <span class="email-address">boddapnn&#64;mail.uc.edu</span>
+
+      <dl class="signal-grid stagger-group" aria-label="Career highlights">
+        <div style="--i: 0">
+          <dt>2</dt>
+          <dd>software internships</dd>
         </div>
-        <a href="mailto:boddapnn@mail.uc.edu?subject=Hello from your website" class="email-button">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-          </svg>
-          Email Me!
-        </a>
-      </div>
-      <div class="contact-form">
-        <form #form="ngForm" (submit)="$event.preventDefault()">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" [(ngModel)]="formData.name" placeholder="Your name" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" [(ngModel)]="formData.email" placeholder="Your email address" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" [(ngModel)]="formData.subject" placeholder="Message subject">
-          </div>
-          
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" [(ngModel)]="formData.message" placeholder="Write your message here..." rows="5" required></textarea>
-          </div>
-          
-          <button type="submit" class="submit-button" (click)="sendEmail(form)" [disabled]="!form.valid">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-            </svg>
-            Send Message
-          </button>
-        </form>
-      </div>
+        <div style="--i: 1">
+          <dt>ML</dt>
+          <dd>research assistant</dd>
+        </div>
+        <div style="--i: 2">
+          <dt>Angular</dt>
+          <dd>production UI work</dd>
+        </div>
+      </dl>
     </div>
-  </div>
-  
-  
+
+    <aside class="profile-console card reveal-soft" aria-label="Profile summary">
+      <div class="console-bar">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="console-body">
+      <p><span>role</span> Software Engineering Intern | Full-Stack & ML Developer Intern</p>
+      <p><span>focus</span> Angular, TypeScript, Python, Machine Learning Systems, API Design</p>
+      <p><span>location</span> Cincinnati, OH, United States</p>
+      <p><span>status</span> Actively seeking Spring/Summer 2027 Software Engineering Internship Opportunities</p>
+      </div>
+    </aside>
+  </section>
+
+  <section class="overview-section reveal" aria-labelledby="overview-title">
+    <div>
+      <p class="section-kicker">What I bring</p>
+      <h2 id="overview-title" class="section-title split-line">
+        <span style="--i: 0">Engineering taste</span>
+        <span style="--i: 1">with hands-on delivery.</span>
+      </h2>
+    </div>
+    <div class="overview-grid stagger-group">
+      <article class="card overview-card" style="--i: 0">
+        <span>01</span>
+        <h3>Frontend systems</h3>
+        <p>Reusable Angular components, responsive layouts, map-based UI validation, and careful interaction design.</p>
+      </article>
+      <article class="card overview-card" style="--i: 1">
+        <span>02</span>
+        <h3>Applied ML</h3>
+        <p>Training and evaluating CNN-based models for classification and segmentation research workflows.</p>
+      </article>
+      <article class="card overview-card" style="--i: 2">
+        <span>03</span>
+        <h3>Team-ready habits</h3>
+        <p>API documentation, Agile support, debugging, testing against requirements, and clear developer communication.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- <section class="cinema-section reveal" aria-labelledby="cinema-title">
+    <div class="cinema-heading">
+      <p class="section-kicker">Cinematic taste</p>
+      <h2 id="cinema-title" class="section-title split-line">
+        <span style="--i: 0">Films that shape</span>
+        <span style="--i: 1">how I see systems.</span>
+      </h2>
+      <p class="section-copy">A small taste archive: atmosphere, rhythm, restraint, and the kind of world-building that makes technology feel human.</p>
+    </div>
+
+    <div class="film-reel stagger-group" aria-label="Favorite films">
+      <article class="film-card" style="--i: 0">
+        <div class="film-poster" aria-hidden="true"><span>01</span></div>
+        <div>
+          <p>Christopher Nolan</p>
+          <h3>Interstellar</h3>
+          <span>Scale, emotion, Best BGM, and problem-solving under impossible constraints.</span>
+        </div>
+      </article>
+      <article class="film-card" style="--i: 1">
+      </article>
+      <article class="film-card" style="--i: 1"> -->

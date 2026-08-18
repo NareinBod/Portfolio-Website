@@ -1,56 +1,59 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
-import { GitHubRepo } from '../../services/githubRepo.service';
+import { Component } from '@angular/core';
+
+interface Project {
+  name: string;
+  type: string;
+  summary: string;
+  contribution: string;
+  stack: string[];
+  impact: string;
+  github?: string;
+  live?: string;
+  featured?: boolean;
+}
+
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
-export class ProjectsComponent implements OnInit{
-    // Change these values to your GitHub username and repositories
-    username = 'NareinBod';
-    repositories: GitHubRepo[] = [];
-    selectedRepo: GitHubRepo | null = null;
-    loading = false;
-    error: string | null = null;
-  
-    constructor(private githubService: ApiService) { }
-  
-    ngOnInit(): void {
-      this.fetchRepositories();
+export class ProjectsComponent {
+  projects: Project[] = [
+    {
+      name: 'Portfolio Website',
+      type: 'Frontend',
+      summary: 'A premium Angular portfolio designed to present experience, projects, and internship readiness clearly.',
+      contribution: 'Built the full Angular interface, theme system, responsive layouts, contact workflow, and curated project presentation.',
+      stack: ['Angular', 'TypeScript', 'SCSS', 'EmailJS', 'Vercel'],
+      impact: 'Turns a personal site into a focused recruiting surface.',
+      github: 'https://github.com/NareinBod',
+      live: 'https://nareinboddapati.vercel.app/',
+      featured: true
+    },
+    {
+      name: 'MapsIndoors Validation Tooling',
+      type: 'Internship',
+      summary: 'Angular application work validating indoor map data against CAD plan documents.',
+      contribution: 'Developed reusable UI components, tested map experiences against requirements, and helped resolve front-end inconsistencies.',
+      stack: ['Angular', 'TypeScript', 'MapsIndoors', 'QA', 'Agile'],
+      impact: 'Improved reliability and usability for a map-heavy application workflow.',
+      featured: true
+    },
+    {
+      name: 'Deep Learning Research Pipeline',
+      type: 'ML Research',
+      summary: 'Research workflows for classification and image segmentation using CNN architectures.',
+      contribution: 'Implemented preprocessing, training, evaluation, and debugging scripts for LeNet, ResNet, and U-Net experiments.',
+      stack: ['Python', 'NumPy', 'Pandas', 'Scikit-learn', 'CNNs'],
+      impact: 'Supported repeatable model experimentation and pixel-level evaluation.'
+    },
+    {
+      name: 'API Documentation System',
+      type: 'Developer Experience',
+      summary: 'OpenAPI documentation work for software application teams during internship delivery.',
+      contribution: 'Authored and maintained API documentation so developers and cross-functional teammates could integrate with less ambiguity.',
+      stack: ['OpenAPI', 'REST', 'Angular', 'Technical Writing'],
+      impact: 'Reduced friction for teams consuming internal APIs.'
     }
-  
-    fetchRepositories(): void {
-      this.loading = true;
-      this.error = null;
-      
-      this.githubService.getRepos(this.username).subscribe({
-        next: (repos) => {
-          this.repositories = repos;
-          this.loading = false;
-        },
-        error: (err) => {
-          this.error = 'Failed to load repositories. Please try again later.';
-          console.error('Error fetching repositories:', err);
-          this.loading = false;
-        }
-      });
-    }
-  
-    fetchRepoDetails(owner: string, repoName: string): void {
-      this.loading = true;
-      this.error = null;
-      
-      this.githubService.getRepoDetails(owner, repoName).subscribe({
-        next: (repo) => {
-          this.selectedRepo = repo;
-          this.loading = false;
-        },
-        error: (err) => {
-          this.error = 'Failed to load repository details. Please try again later.';
-          console.error('Error fetching repository details:', err);
-          this.loading = false;
-        }
-      });
-    }
+  ];
 }

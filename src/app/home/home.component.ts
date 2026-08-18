@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import emailjs from 'emailjs-com';
 
 @Component({
   selector: 'app-home',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterModule],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'] // Corrected from "styleUrl" to "styleUrls"
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
   formData = {
@@ -16,56 +17,33 @@ export class HomeComponent {
     message: '',
   };
 
-  emailSent = false; // New flag for popup
+  sending = false;
+  formStatus: 'idle' | 'success' | 'error' = 'idle';
 
-  sendEmail(form: NgForm) {
-    const serviceId = 'service_9bsjybq';
-    const templateId = 'template_u7psef6';
-    const publicKey = 'exrdSnOG8p3cBM9gA';
+  sendEmail(form: NgForm): void {
+    if (form.invalid || this.sending) {
+      return;
+    }
 
-    emailjs.send(serviceId, templateId, {
+    this.sending = true;
+    this.formStatus = 'idle';
+
+    emailjs.send('service_9bsjybq', 'template_u7psef6', {
       from_name: this.formData.name,
-      subject: this.formData.subject,
+      reply_to: this.formData.email,
+      subject: this.formData.subject || 'Portfolio inquiry',
       message: this.formData.message,
-    }, publicKey)
-    .then((response) => {
-      console.log('Email sent!', response);
-      form.resetForm();
-      this.emailSent = true;
-
-      setTimeout(() => {
-        this.emailSent = false;
-      }, 3000); // Hide after 3 seconds
-    })
-    .catch((error) => {
-      console.error('Email failed to send:', error);
-    });
-
-    alert('✅ Message sent successfully!')
+    }, 'exrdSnOG8p3cBM9gA')
+      .then(() => {
+        form.resetForm();
+        this.formStatus = 'success';
+      })
+      .catch((error) => {
+        console.error('Email failed to send:', error);
+        this.formStatus = 'error';
+      })
+      .finally(() => {
+        this.sending = false;
+      });
   }
-
-  showAlert() {
-    const alertElement = document.getElementById('myAlert');
-    if (alertElement) {
-      alertElement.style.display = 'block';
-    }
-  }
-  
-  hideAlert() {
-    const alertElement = document.getElementById('myAlert');
-    if (alertElement) {
-      alertElement.style.display = 'none';
-    }
-  }
-
-  showSuccess = false;
-
-  showSuccessMessage() {
-    this.showSuccess = true;
-    setTimeout(() => {
-      this.showSuccess = false;
-    }, 3000); // Hides after 3 seconds
-  }
-
-
 }

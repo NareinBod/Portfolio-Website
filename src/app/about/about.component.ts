@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
-interface Job {
+interface Experience {
   logo: string;
-  title: string;
+  role: string;
+  organization: string;
   date: string;
-  description: string[];
+  location: string;
+  tags: string[];
+  bullets: string[];
   current?: boolean;
 }
 
-interface experience {
+interface Credential {
   name: string;
   issuer: string;
   date: string;
@@ -19,106 +21,77 @@ interface experience {
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent {
-  skills: string[] = [
-  "Python",
-  "C++",
-  "JavaScript",
-  "TypeScript",
-  "HTML",
-  "Matlab",
-  "LabView",
-  "Angular",
-  "Numpy",
-  "Pandas",
-  "Scikit-learn",
-  "OpenAPI",
-  "VBA",
-  "Git/Github",
-  "CSS",
-  "SQL",
-  "Jira",
-  "SourceTree"
+  experiences: Experience[] = [
+    {
+      logo: '/feng_chia.png',
+      role: 'Research Assistant',
+      organization: 'Feng Chia University',
+      date: 'Aug 2025 - Present',
+      location: 'Taichung City, Taiwan',
+      tags: ['Python', 'CNNs', 'Segmentation', 'Research'],
+      current: true,
+      bullets: [
+        'Implemented and trained LeNet, ResNet, and U-Net architectures for classification and image segmentation tasks.',
+        'Built Python scripts for preprocessing, training, evaluation, and debugging model workflows.',
+        'Collaborated with a faculty mentor to design experiments and improve research repeatability.'
+      ]
+    },
+    {
+      logo: '/dts.png',
+      role: 'Digital Technology Solutions Worker',
+      organization: 'University of Cincinnati',
+      date: 'May 2025 - Aug 2025',
+      location: 'Cincinnati, OH',
+      tags: ['Angular', 'TypeScript', 'MapsIndoors', 'QA'],
+      bullets: [
+        'Validated an Angular web application against CAD plan documents and map requirements.',
+        'Developed reusable UI components that improved responsiveness and usability.',
+        'Supported debugging and issue triage in an Agile engineering environment.'
+      ]
+    },
+    {
+      logo: '/danlaw.png',
+      role: 'Software Applications Intern',
+      organization: 'Danlaw',
+      date: 'Jan 2025 - Apr 2025',
+      location: 'Novi, MI',
+      tags: ['Angular', 'OpenAPI', 'Documentation', 'Debugging'],
+      bullets: [
+        'Enhanced Angular application pages and user-facing functionality.',
+        'Authored and maintained OpenAPI documentation for developer and cross-functional use.',
+        'Collaborated with teammates to troubleshoot issues and deliver cleaner application workflows.'
+      ]
+    },
+    {
+      logo: '/uc.png',
+      role: 'Engineering Design Teaching Assistant',
+      organization: 'University of Cincinnati',
+      date: 'Aug 2024 - Dec 2024',
+      location: 'Cincinnati, OH',
+      tags: ['Mentoring', 'Communication', 'Problem Solving'],
+      bullets: [
+        'Supported students during hands-on engineering design activities and mentoring sessions.',
+        'Collaborated with the teaching team on grading, demonstrations, and course support.',
+        'Helped students translate technical concepts into practical project work.'
+      ]
+    }
   ];
 
-  // ...existing code...
-experiences: Job[] = [
-  {
-    logo: '/feng_chia.png',
-    title: 'Research Assistant, Feng Chia University',
-    date: 'Aug 2025 - Present',
-    description: [
-      'Implemented and trained LeNet, ResNet, and U-Net architectures for classification and image segmentation tasks, achieving high pixel-level accuracy and gaining hands-on experience in deep learning pipelines.',
-      'Developed and debugged Python scripts to preprocess datasets, train models, and evaluate performance, improving model reliability and gaining experience in end-to-end neural network workflows.',
-      'Collaborated with a faculty mentor to design experiments and apply modern deep learning techniques, ensuring accurate results and enhancing research efficiency.'
-    ],
-    current: true
-  },
-  {
-    logo: '/dts.png',
-    title: 'Digital Technology Solutions Worker, UC',
-    date: 'May 2025 - Aug 2025',
-    description: [
-      'Validated Angular web application against CAD plan documents, integrating MapsIndoors and resolving inconsistencies, improving front-end reliability and testing accuracy.',
-      'Developed reusable UI components, enhancing responsiveness and usability while aligning with project requirements and gaining hands-on experience in modern web development.',
-      'Provided third-level support in an Agile environment, debugging code and optimizing performance to maintain high system stability.'
-    ]
-  },
-  {
-    logo: '/danlaw.png',
-    title: 'Software Applications Intern, Danlaw',
-    date: 'Jan 2025 - Apr 2025',
-    description: [
-      'Enhanced an Angular application by creating new pages, modifying functionalities, and implementing responsive, user-friendly features, improving front-end performance and usability.',
-      'Authored and maintained API documentation using OpenAPI, ensuring clarity and accessibility for developers and cross-functional teams.',
-      'Collaborated with team members to troubleshoot, debug, and deliver high-quality solutions, contributing to successful project outcomes and workflow efficiency.'
-    ]
-  },
-  {
-    logo: '/uc.png',
-    title: 'Engineering Design Teaching Assistant',
-    date: 'Aug 2024 - Dec 2024',
-    description: [
-      'Assisted students during in-class activities and peer mentoring sessions, providing targeted assistance to enhance their understanding and engagement with course material.',
-      'Collaborated with the teaching team to evaluate assignments, exams, and project demonstrations, ensuring fair and consistent grading while offering insights for continuous improvements.',
-      'Facilitated hands-on learning experiences in the classroom, helping students apply theoretical knowledge through practical exercises and problem-solving activities.'
-    ]
-  }
-];
+  skillGroups = [
+    { label: 'Languages', skills: ['Python', 'C++', 'JavaScript', 'TypeScript', 'SQL', 'MATLAB'] },
+    { label: 'Frontend', skills: ['Angular', 'HTML', 'SCSS', 'Responsive UI', 'Accessibility'] },
+    { label: 'Data and ML', skills: ['NumPy', 'Pandas', 'Scikit-learn', 'CNNs', 'Model Evaluation'] },
+    { label: 'Tools', skills: ['Git', 'GitHub', 'OpenAPI', 'Jira', 'SourceTree', 'Vercel'] }
+  ];
 
-
-  certifications: experience[] = [
-    {
-      name: "Supervised Machine Learning",
-      issuer: "Stanford University",
-      date: "Mar 2025",
-      url: "/Coursera_SL.pdf"
-    },
-    {
-      name: "Intro to Machine Learning",
-      issuer: "Kaggle",
-      date: "Dec 2024",
-      url: "/Intro_To_ML.pdf"
-    },
-    {
-      name: "Performing a Technical Security Audit and Assesment",
-      issuer: "Linkedin",
-      date: "Nov 2024",
-      url: "/Linkedin.pdf"
-    }
-  ]
-
-  expandedIndex: number[] = []; // Track expanded accordion indices
-
-  toggleAccordion(index: number): void {
-    if (this.expandedIndex.includes(index)) {
-      this.expandedIndex = this.expandedIndex.filter((i) => i !== index);
-    } else {
-      this.expandedIndex.push(index);
-    }
-  }
+  credentials: Credential[] = [
+    { name: 'AWS Certified Cloud Practitioner', issuer: 'Amazon Web Services', date: 'May 2026', url: '/AWS_Cloud_Practitioner.pdf' },
+    { name: 'Supervised Machine Learning', issuer: 'Stanford University', date: 'Mar 2025', url: '/Coursera_SL.pdf' },
+    { name: 'Intro to Machine Learning', issuer: 'Kaggle', date: 'Dec 2024', url: '/Intro_To_ML.pdf' },
+    { name: 'Technical Security Audit and Assessment', issuer: 'LinkedIn', date: 'Nov 2024', url: '/Linkedin.pdf' }
+  ];
 }
