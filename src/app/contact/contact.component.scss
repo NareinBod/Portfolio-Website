@@ -1,0 +1,11 @@
+:host { display: block; }
+
+.contact {
+  width: min(100%, var(--container));
+  margin: 0 auto;
+  padding: var(--space-section) var(--space-page);
+}
+
+.contact h2 { margin: 0; color: var(--text); font-size: clamp(2rem, 4vw, 3.5rem); }
+.contact p { color: var(--text-muted); line-height: 1.7; }
+.contact p:last-child { display: flex; gap: 1rem; }

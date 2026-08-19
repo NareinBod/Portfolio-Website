@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import emailjs from 'emailjs-com';
+import { ScrollRevealDirective } from '../shared/scroll-reveal.directive';
 
 @Component({
   selector: 'app-home',
-  imports: [FormsModule, RouterModule],
+  imports: [FormsModule, ScrollRevealDirective],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

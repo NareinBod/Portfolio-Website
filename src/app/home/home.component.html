@@ -1,23 +1,17 @@
-<main class="home-page">
-  <section class="hero-shell reveal" aria-labelledby="hero-title">
+<main class="home-page" appScrollReveal>
+  <section class="hero-shell" aria-labelledby="hero-title">
     <div class="hero-copy">
-      <div class="availability reveal-soft">
-        <span class="status-dot" aria-hidden="true"></span>
-        Seeking software engineering internships
-      </div>
-
-      <p class="section-kicker reveal-soft">Computer Science - University of Cincinnati</p>
       <h1 id="hero-title" class="split-title" aria-label="Narein Boddapati">
         <span style="--i: 0">Narein</span>
         <span style="--i: 1">Boddapati</span>
       </h1>
       <p class="hero-lede reveal-soft">
-        I build reliable Angular applications, API integrations, and ML research workflows with a focus on clear interfaces and practical engineering outcomes.
+        I'm a junior studying Computer Science at the University of Cincinnati, enrolled in its five-year co-op program. I expect to graduate in April 2028.
       </p>
 
       <div class="hero-actions reveal-soft" aria-label="Primary links">
         <a class="btn btn-primary" href="/NAREIN_RESUME_2025.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
-        <a class="btn btn-secondary" routerLink="/projects">See Projects</a>
+        <a class="btn btn-secondary" href="#projects">See Projects</a>
         <a class="btn btn-secondary" href="https://github.com/NareinBod" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a class="btn btn-secondary" href="https://www.linkedin.com/in/narein/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
@@ -43,8 +37,6 @@
         <span></span><span></span><span></span>
       </div>
       <div class="console-body">
-      <p><span>role</span> Software Engineering Intern | Full-Stack & ML Developer Intern</p>
-      <p><span>focus</span> Angular, TypeScript, Python, Machine Learning Systems, API Design</p>
       <p><span>location</span> Cincinnati, OH, United States</p>
       <p><span>status</span> Actively seeking Spring/Summer 2027 Software Engineering Internship Opportunities</p>
       </div>
@@ -55,48 +47,25 @@
     <div>
       <p class="section-kicker">What I bring</p>
       <h2 id="overview-title" class="section-title split-line">
-        <span style="--i: 0">Engineering taste</span>
-        <span style="--i: 1">with hands-on delivery.</span>
+        <span style="--i: 0">Technical foundation</span>
+        <span style="--i: 1">and dependable execution.</span>
       </h2>
     </div>
     <div class="overview-grid stagger-group">
-      <article class="card overview-card" style="--i: 0">
+      <article class="card overview-card" [scrollReveal]="0">
         <span>01</span>
-        <h3>Frontend systems</h3>
-        <p>Reusable Angular components, responsive layouts, map-based UI validation, and careful interaction design.</p>
+        <h3>Frontend development</h3>
+        <p>Develop Angular components and responsive interfaces with attention to maintainability, accessibility, and documented requirements.</p>
       </article>
-      <article class="card overview-card" style="--i: 1">
+      <article class="card overview-card" [scrollReveal]="1">
         <span>02</span>
-        <h3>Applied ML</h3>
-        <p>Training and evaluating CNN-based models for classification and segmentation research workflows.</p>
+        <h3>Data and machine learning</h3>
+        <p>Build and evaluate Python-based classification and segmentation workflows, from preprocessing through model assessment.</p>
       </article>
-      <article class="card overview-card" style="--i: 2">
+      <article class="card overview-card" [scrollReveal]="2">
         <span>03</span>
-        <h3>Team-ready habits</h3>
-        <p>API documentation, Agile support, debugging, testing against requirements, and clear developer communication.</p>
+        <h3>Professional practice</h3>
+        <p>Work methodically through debugging, testing, API documentation, and team feedback to deliver reliable results.</p>
       </article>
     </div>
   </section>
-
-  <!-- <section class="cinema-section reveal" aria-labelledby="cinema-title">
-    <div class="cinema-heading">
-      <p class="section-kicker">Cinematic taste</p>
-      <h2 id="cinema-title" class="section-title split-line">
-        <span style="--i: 0">Films that shape</span>
-        <span style="--i: 1">how I see systems.</span>
-      </h2>
-      <p class="section-copy">A small taste archive: atmosphere, rhythm, restraint, and the kind of world-building that makes technology feel human.</p>
-    </div>
-
-    <div class="film-reel stagger-group" aria-label="Favorite films">
-      <article class="film-card" style="--i: 0">
-        <div class="film-poster" aria-hidden="true"><span>01</span></div>
-        <div>
-          <p>Christopher Nolan</p>
-          <h3>Interstellar</h3>
-          <span>Scale, emotion, Best BGM, and problem-solving under impossible constraints.</span>
-        </div>
-      </article>
-      <article class="film-card" style="--i: 1">
-      </article>
-      <article class="film-card" style="--i: 1"> -->

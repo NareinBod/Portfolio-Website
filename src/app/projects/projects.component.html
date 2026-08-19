@@ -1,4 +1,4 @@
-<main class="projects-page">
+<main class="projects-page" appScrollReveal>
   <section class="projects-hero reveal" aria-labelledby="projects-title">
     <p class="section-kicker reveal-soft">Selected work</p>
     <h1 id="projects-title" class="section-title split-line">
@@ -12,7 +12,7 @@
 
   <section class="project-grid stagger-group" aria-label="Project list">
     @for (project of projects; track project.name; let i = $index) {
-      <article class="project-card card" [class.featured]="project.featured" [style.--i]="i">
+      <article class="project-card card" [class.featured]="project.featured" [scrollReveal]="i">
         <div class="project-topline">
           <span>{{ project.type }}</span>
           <div class="project-links">

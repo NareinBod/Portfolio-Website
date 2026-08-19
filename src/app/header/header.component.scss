@@ -5,8 +5,16 @@
   top: 0;
   z-index: 20;
   padding: 1rem;
+  backdrop-filter: none;
+  background: rgba(10, 10, 10, 0.7);
+  border-bottom: 1px solid transparent;
+  transition: background 180ms var(--ease-out), border-color 180ms var(--ease-out), backdrop-filter 180ms var(--ease-out);
+}
+
+.site-header.scrolled {
+  background: rgba(10, 10, 10, 0.86);
+  border-color: var(--border);
   backdrop-filter: blur(18px);
-  background: linear-gradient(180deg, rgba(3, 3, 3, 0.86), rgba(3, 3, 3, 0.5) 72%, transparent);
 }
 
 .nav-shell {
@@ -30,30 +38,28 @@
 .brand-mark {
   display: inline-grid;
   place-items: center;
-  width: 30px;
-  height: 30px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.035);
+  width: 8px;
+  height: 8px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--text);
   color: var(--text);
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 760;
 }
 
-.brand-name {
-  color: var(--text-muted);
-  font-weight: 650;
-}
+.nav-menu { margin: 0; }
+.nav-menu summary { display: none; }
 
 .nav-links {
   display: flex;
   align-items: center;
   gap: 0.12rem;
   padding: 0.2rem;
-  border: 1px solid rgba(255, 255, 255, 0.075);
+  border: 1px solid var(--border);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.028);
+  background: var(--surface);
 }
 
 .nav-links a {
@@ -69,14 +75,22 @@
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.06);
+  color: var(--accent);
+  background: var(--accent-soft);
 }
 
-@media (max-width: 720px) {
+@media (min-width: 768px) and (max-width: 1024px) {
+  .site-header { padding-inline: var(--space-page); }
+}
+
+@media (max-width: 767px) {
   .site-header { padding: 0.75rem 0.65rem; }
   .nav-shell { gap: 0.55rem; }
   .brand-name { display: none; }
-  .nav-links { flex: 1; justify-content: center; }
-  .nav-links a { padding: 0.5rem 0.46rem; font-size: 0.8rem; }
+  .nav-menu { position: relative; }
+  .nav-menu summary { display: grid; gap: 4px; width: 42px; padding: 11px; cursor: pointer; list-style: none; border: 1px solid var(--border); border-radius: var(--radius); }
+  .nav-menu summary::-webkit-details-marker { display: none; }
+  .nav-menu summary span { height: 2px; background: var(--text); }
+  .nav-links { position: absolute; top: calc(100% + 0.5rem); right: 0; display: grid; min-width: 11rem; padding: 0.35rem; }
+  .nav-links a { padding: 0.7rem 0.8rem; }
 }

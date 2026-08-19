@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ScrollRevealDirective } from '../shared/scroll-reveal.directive';
 
 interface Project {
   name: string;
@@ -14,46 +15,37 @@ interface Project {
 
 @Component({
   selector: 'app-projects',
+  imports: [ScrollRevealDirective],
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent {
   projects: Project[] = [
     {
-      name: 'Portfolio Website',
-      type: 'Frontend',
-      summary: 'A premium Angular portfolio designed to present experience, projects, and internship readiness clearly.',
-      contribution: 'Built the full Angular interface, theme system, responsive layouts, contact workflow, and curated project presentation.',
-      stack: ['Angular', 'TypeScript', 'SCSS', 'EmailJS', 'Vercel'],
-      impact: 'Turns a personal site into a focused recruiting surface.',
-      github: 'https://github.com/NareinBod',
-      live: 'https://nareinboddapati.vercel.app/',
+      name: 'Atlantis — Secure Real-Time Collaborative Messaging Platform',
+      type: 'Full Stack',
+      summary: 'Full-stack real-time messaging platform with secure authentication, role-based access control, and group chat functionality. Cloud deployment on Microsoft Azure and Docker with RESTful APIs and a CI/CD pipeline via GitHub Actions.',
+      contribution: 'Built secure real-time messaging, RESTful APIs, role-based access control, and Azure/Docker deployment workflows.',
+      stack: ['Node.js', 'Express', 'MongoDB', 'Azure', 'Docker'],
+      impact: 'Delivered a deployable collaboration platform with automated CI/CD.',
       featured: true
     },
     {
-      name: 'MapsIndoors Validation Tooling',
-      type: 'Internship',
-      summary: 'Angular application work validating indoor map data against CAD plan documents.',
-      contribution: 'Developed reusable UI components, tested map experiences against requirements, and helped resolve front-end inconsistencies.',
-      stack: ['Angular', 'TypeScript', 'MapsIndoors', 'QA', 'Agile'],
-      impact: 'Improved reliability and usability for a map-heavy application workflow.',
+      name: 'Momentum — Business Operations & Manufacturing Analytics Platform',
+      type: 'Data & Analytics',
+      summary: 'Relational MySQL database and Python/Pandas ETL pipeline processing 5,000+ transactional records. Includes a demand forecasting model, What-If Reorder Simulator, and a 3-page Power BI dashboard.',
+      contribution: 'Built the data pipeline, forecasting and reorder tools, and business intelligence dashboard.',
+      stack: ['Python', 'MySQL', 'Pandas', 'Power BI'],
+      impact: 'Turns operational data into demand, inventory, and reporting decisions.',
       featured: true
     },
     {
-      name: 'Deep Learning Research Pipeline',
-      type: 'ML Research',
-      summary: 'Research workflows for classification and image segmentation using CNN architectures.',
-      contribution: 'Implemented preprocessing, training, evaluation, and debugging scripts for LeNet, ResNet, and U-Net experiments.',
-      stack: ['Python', 'NumPy', 'Pandas', 'Scikit-learn', 'CNNs'],
-      impact: 'Supported repeatable model experimentation and pixel-level evaluation.'
-    },
-    {
-      name: 'API Documentation System',
-      type: 'Developer Experience',
-      summary: 'OpenAPI documentation work for software application teams during internship delivery.',
-      contribution: 'Authored and maintained API documentation so developers and cross-functional teammates could integrate with less ambiguity.',
-      stack: ['OpenAPI', 'REST', 'Angular', 'Technical Writing'],
-      impact: 'Reduced friction for teams consuming internal APIs.'
+      name: 'Vision Transformer (ViT) for Plant Disease Detection',
+      type: 'Machine Learning',
+      summary: 'Fine-tuned Vision Transformer using transfer learning for multi-class plant disease classification across 38 disease classes. End-to-end pipeline covering preprocessing, augmentation, training, and evaluation.',
+      contribution: 'Fine-tuned a transformer model and implemented the complete data-to-evaluation workflow.',
+      stack: ['Python', 'PyTorch', 'Hugging Face Transformers'],
+      impact: 'Supports scalable classification across a broad set of plant diseases.'
     }
   ];
 }

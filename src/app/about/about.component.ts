@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { AfterViewChecked, Component, ViewChild, ElementRef } from '@angular/core';
+import { ScrollRevealDirective } from '../shared/scroll-reveal.directive';
+
 
 interface Experience {
   logo: string;
@@ -16,15 +18,24 @@ interface Credential {
   issuer: string;
   date: string;
   url: string;
+  type?: 'aws-badge' | 'pdf';
 }
 
 @Component({
   selector: 'app-about',
   standalone: true,
+  imports: [ScrollRevealDirective],
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
-export class AboutComponent {
+export class AboutComponent implements AfterViewChecked {
+
+  @ViewChild('credlyBadge')
+  credlyBadge?: ElementRef<HTMLDivElement>;
+
+  showAwsBadge = false;
+  private credlyScriptLoaded = false;
+
   experiences: Experience[] = [
     {
       logo: '/feng_chia.png',
@@ -82,16 +93,75 @@ export class AboutComponent {
   ];
 
   skillGroups = [
-    { label: 'Languages', skills: ['Python', 'C++', 'JavaScript', 'TypeScript', 'SQL', 'MATLAB'] },
-    { label: 'Frontend', skills: ['Angular', 'HTML', 'SCSS', 'Responsive UI', 'Accessibility'] },
-    { label: 'Data and ML', skills: ['NumPy', 'Pandas', 'Scikit-learn', 'CNNs', 'Model Evaluation'] },
-    { label: 'Tools', skills: ['Git', 'GitHub', 'OpenAPI', 'Jira', 'SourceTree', 'Vercel'] }
+    { label: 'Languages', skills: ['Python', 'SQL', 'R', 'C++', 'JavaScript', 'TypeScript', 'Matlab'] },
+    { label: 'Data & Analytics', skills: ['Pandas', 'NumPy', 'Matplotlib', 'Power BI', 'Excel'] },
+    { label: 'Cloud & Development', skills: ['AWS', 'Azure', 'Docker', 'MongoDB', 'Express.js', 'Angular', 'Node.js', 'Git'] },
+    { label: 'Machine Learning', skills: ['PyTorch', 'Scikit-learn', 'OpenCV'] }
   ];
 
   credentials: Credential[] = [
-    { name: 'AWS Certified Cloud Practitioner', issuer: 'Amazon Web Services', date: 'May 2026', url: '/AWS_Cloud_Practitioner.pdf' },
-    { name: 'Supervised Machine Learning', issuer: 'Stanford University', date: 'Mar 2025', url: '/Coursera_SL.pdf' },
-    { name: 'Intro to Machine Learning', issuer: 'Kaggle', date: 'Dec 2024', url: '/Intro_To_ML.pdf' },
-    { name: 'Technical Security Audit and Assessment', issuer: 'LinkedIn', date: 'Nov 2024', url: '/Linkedin.pdf' }
+    {
+      name: 'AWS Certified Cloud Practitioner',
+      issuer: 'Amazon Web Services',
+      date: 'May 2026',
+      url: '',
+      type: 'aws-badge'
+    },
+    {
+      name: 'Supervised Machine Learning',
+      issuer: 'Stanford University',
+      date: 'Mar 2025',
+      url: '/Coursera_SL.pdf',
+      type: 'pdf'
+    },
+    {
+      name: 'Intro to Machine Learning',
+      issuer: 'Kaggle',
+      date: 'Dec 2024',
+      url: '/Intro_To_ML.pdf',
+      type: 'pdf'
+    },
+    {
+      name: 'Technical Security Audit and Assessment',
+      issuer: 'LinkedIn',
+      date: 'Nov 2024',
+      url: '/Linkedin.pdf',
+      type: 'pdf'
+    }
   ];
+  openCredential(credential: Credential): void {
+    if (credential.name === 'AWS Certified Cloud Practitioner') {
+      this.showAwsBadge = true;
+      return;
+    }
+
+    window.open(credential.url, '_blank', 'noopener,noreferrer');
+  }
+
+  closeAwsBadge(): void {
+    this.showAwsBadge = false;
+  }
+
+  ngAfterViewChecked(): void {
+    if (this.showAwsBadge && this.credlyBadge && !this.credlyScriptLoaded) {
+      this.loadCredlyScript();
+    }
+  }
+
+  private loadCredlyScript(): void {
+    if (document.querySelector('script[src*="credly.com"]')) {
+      this.credlyScriptLoaded = true;
+      return;
+    }
+
+    const script = document.createElement('script');
+
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = 'https://cdn.credly.com/assets/utilities/embed.js';
+
+    document.body.appendChild(script);
+
+    this.credlyScriptLoaded = true;
+  }
 }
