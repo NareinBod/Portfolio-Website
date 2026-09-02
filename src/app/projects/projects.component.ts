@@ -22,12 +22,12 @@ interface Project {
 export class ProjectsComponent {
   projects: Project[] = [
     {
-      name: 'Atlantis — Secure Real-Time Collaborative Messaging Platform',
+      name: 'Kortex',
       type: 'Full Stack',
-      summary: 'Full-stack real-time messaging platform with secure authentication, role-based access control, and group chat functionality. Cloud deployment on Microsoft Azure and Docker with RESTful APIs and a CI/CD pipeline via GitHub Actions.',
-      contribution: 'Built secure real-time messaging, RESTful APIs, role-based access control, and Azure/Docker deployment workflows.',
-      stack: ['Node.js', 'Express', 'MongoDB', 'Azure', 'Docker'],
-      impact: 'Delivered a deployable collaboration platform with automated CI/CD.',
+      summary: 'A full-stack Retrieval-Augmented Generation application for natural-language Q&A over user-uploaded documents, with streamed responses and source citations planned.',
+      contribution: 'Built document ingestion and retrieval using text chunking, embeddings, persistent ChromaDB storage, LangChain, and an async FastAPI backend.',
+      stack: ['Angular', 'FastAPI', 'LangChain', 'ChromaDB', 'Docker'],
+      impact: 'Makes uploaded knowledge bases searchable through grounded natural-language answers.',
       featured: true
     },
     {
@@ -40,12 +40,12 @@ export class ProjectsComponent {
       featured: true
     },
     {
-      name: 'Vision Transformer (ViT) for Plant Disease Detection',
-      type: 'Machine Learning',
-      summary: 'Fine-tuned Vision Transformer using transfer learning for multi-class plant disease classification across 38 disease classes. End-to-end pipeline covering preprocessing, augmentation, training, and evaluation.',
-      contribution: 'Fine-tuned a transformer model and implemented the complete data-to-evaluation workflow.',
-      stack: ['Python', 'PyTorch', 'Hugging Face Transformers'],
-      impact: 'Supports scalable classification across a broad set of plant diseases.'
+      name: 'Atlantis',
+      type: 'Full Stack',
+      summary: 'A secure real-time collaborative messaging platform built with a team, with authentication, role-based access control, group chat, MongoDB Atlas, Azure, and CI/CD.',
+      contribution: 'Implemented secure messaging workflows and helped design a scalable Azure deployment architecture.',
+      stack: ['Node.js', 'Express', 'MongoDB', 'Azure', 'GitHub Actions'],
+      impact: 'A practical collaboration product designed for reliable, automated deployment.'
     }
   ];
 }
