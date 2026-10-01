@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "HabitTracker": {
+    "narein-portfolio": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/habit-tracker",
+            "outputPath": "dist/narein-portfolio",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "HabitTracker:build:production"
+              "buildTarget": "narein-portfolio:build:production"
             },
             "development": {
-              "buildTarget": "HabitTracker:build:development"
+              "buildTarget": "narein-portfolio:build:development"
             }
           },
           "defaultConfiguration": "development"

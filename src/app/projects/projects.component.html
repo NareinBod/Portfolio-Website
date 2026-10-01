@@ -1,1 +1,24 @@
-<div class="projects-page" appScrollReveal><header class="projects-intro"><p class="section-kicker">Selected work / 01-03</p><h2 class="section-title">Engineering stories with the signal left in.</h2><p class="section-copy">A selected view of applied AI, full-stack systems, and analytical tools - structured around the work, not decorative tiles.</p></header><div class="project-index" aria-label="Selected projects">@for (project of projects; track project.name; let i = $index) {<article class="project" [class.featured]="i === 0" [scrollReveal]="i"><div class="project-number">0{{ i + 1 }}</div><div class="project-main"><p class="type">{{ project.type }}</p><h3>{{ project.name }}</h3><p class="summary">{{ project.summary }}</p><div class="stack">@for (tech of project.stack; track tech) {<span class="chip">{{ tech }}</span>}</div></div><div class="project-detail"><p><span>ROLE</span>{{ project.contribution }}</p><p><span>OUTCOME</span>{{ project.impact }}</p><div class="project-links">@if (project.live) {<a [href]="project.live" target="_blank" rel="noopener noreferrer">Live ↗</a>}@if (project.github) {<a [href]="project.github" target="_blank" rel="noopener noreferrer">GitHub ↗</a>}</div></div></article>}</div></div>
+<section class="work-section" aria-labelledby="work-heading">
+  <div class="section-label">
+    <span aria-hidden="true"></span>
+    <span id="work-heading">I · SELECTED WORK</span>
+    <span aria-hidden="true"></span>
+  </div>
+
+  <div class="project-list" aria-label="Selected projects">
+    @for (project of projects; track project.n) {
+      <a
+        [href]="project.href"
+        class="project-row"
+        target="_blank"
+        rel="noopener noreferrer"
+        [attr.aria-label]="project.title + ' — ' + project.stack"
+      >
+        <span class="project-n" aria-hidden="true">{{ project.n }}</span>
+        <span class="project-title">{{ project.title }} <span class="arrow" aria-hidden="true">↗</span></span>
+        <span class="project-desc">{{ project.desc }}</span>
+        <span class="project-stack">{{ project.stack }}</span>
+      </a>
+    }
+  </div>
+</section>

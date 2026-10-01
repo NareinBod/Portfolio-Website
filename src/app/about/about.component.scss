@@ -1,1 +1,147 @@
-.experience-page{width:min(100%,var(--container));margin:auto;padding:var(--section) var(--page)}.experience-intro{max-width:780px}.experience-ledger{margin-top:4rem}.experience-record{display:grid;grid-template-columns:10rem minmax(15rem,.9fr) minmax(18rem,1.1fr);gap:clamp(1.5rem,4vw,4rem);padding:2.5rem 0;border-top:1px solid var(--line)}.experience-record:last-child{border-bottom:1px solid var(--line)}.record-index{color:var(--muted);font:500 .68rem/1.6 var(--mono)}.record-index span{display:block;margin-bottom:1.4rem;color:var(--blue);font-size:1.6rem}.record-index p{margin:0}.record-title img{width:42px;height:42px;object-fit:contain;margin-bottom:1.5rem;background:#fff;padding:4px}.record-title p{margin:0;color:var(--blue);font:500 .67rem var(--mono);letter-spacing:.07em;text-transform:uppercase}.record-title h3{margin:.7rem 0 0;font-size:clamp(1.7rem,3.2vw,3rem);font-weight:600;letter-spacing:-.07em;line-height:.92}.record-work{display:flex;flex-direction:column;justify-content:space-between}.record-work ul{margin:0;padding:0;list-style:none}.record-work li{position:relative;margin:0 0 .7rem;padding-left:1rem;color:var(--muted);font-size:.93rem;line-height:1.58}.record-work li::before{content:'+';position:absolute;left:0;color:var(--blue);font-family:var(--mono)}.tag-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.5rem}.skills{margin-top:var(--section)}.skill-lines{margin-top:3rem;border-top:1px solid var(--line)}.skill-lines>div{display:grid;grid-template-columns:13rem 1fr;gap:2rem;padding:1rem 0;border-bottom:1px solid var(--line)}.skill-lines p{margin:0;color:var(--blue);font:500 .7rem var(--mono)}.skill-lines span{display:flex;flex-wrap:wrap;gap:.4rem .8rem}.skill-lines b{font:400 .9rem var(--mono);color:var(--muted)}.credential{display:flex;align-items:center;justify-content:space-between;gap:clamp(2rem,10vw,10rem);margin-top:var(--section);padding:4rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.credential-copy{max-width:38rem}.credential h2{margin:0;font-size:clamp(2.5rem,5vw,4.8rem);line-height:.88;letter-spacing:-.08em}.credential-copy>p:last-of-type{max-width:33ch;color:var(--muted);line-height:1.6}.credential a{display:inline-block;margin-top:1rem;color:var(--text);font:500 .72rem var(--mono);text-decoration:none;border-bottom:1px solid var(--blue);padding-bottom:.3rem}.credential>img{width:clamp(130px,16vw,200px);height:auto;filter:drop-shadow(0 16px 22px rgba(0,0,0,.28))}@media(max-width:800px){.experience-record{grid-template-columns:6rem 1fr}.record-work{grid-column:2}.skill-lines>div{grid-template-columns:1fr;gap:.75rem}.credential{align-items:flex-start}}@media(max-width:520px){.experience-record{grid-template-columns:1fr;gap:1rem}.record-work{grid-column:auto}.record-index{display:flex;gap:1rem;align-items:center}.record-index span{margin:0}.credential{flex-direction:column}.credential>img{align-self:center}}
+:host {
+  display: block;
+}
+
+/* ── Shared inner layout ─────────────────────────────────────────── */
+.about-section,
+.experience-section,
+.skills-section {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 120px var(--page) 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── About ──────────────────────────────────────────────────────── */
+.about-statement {
+  margin: 0 0 24px;
+  max-width: 760px;
+  font-family: var(--display);
+  font-size: clamp(30px, 4vw, 50px);
+  line-height: 1.15;
+  text-wrap: balance;
+  color: var(--text-strong);
+
+  em {
+    font-style: italic;
+    color: var(--white);
+  }
+}
+
+.about-body {
+  margin: 0;
+  max-width: 560px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 17px;
+  text-wrap: pretty;
+}
+
+/* ── Experience ─────────────────────────────────────────────────── */
+.exp-list {
+  width: 100%;
+  border-top: 1px solid var(--border);
+}
+
+.exp-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 36px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.exp-when {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .2em;
+  color: var(--white);
+}
+
+.exp-role {
+  font-family: var(--display);
+  font-size: 32px;
+  color: var(--text-strong);
+
+  em {
+    font-style: italic;
+    color: var(--white);
+  }
+}
+
+.exp-desc {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 520px;
+  font-size: 17px;
+  text-wrap: pretty;
+}
+
+/* ── Skills ─────────────────────────────────────────────────────── */
+.skills-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  max-width: 760px;
+}
+
+.skill-chip {
+  border: 1px solid var(--text-strong);
+  color: var(--text-strong);
+  border-radius: var(--radius-sm);
+  padding: 11px 22px;
+  font-size: 17px;
+  cursor: default;
+  transition: all .3s ease;
+
+  &:hover {
+    background: var(--text-strong);
+    color: var(--bg);
+    transform: translateY(-3px);
+  }
+}
+
+/* ── Résumé card ────────────────────────────────────────────────── */
+.resume-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  max-width: var(--container);
+  margin: 120px auto 0;
+  padding: 56px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.resume-title {
+  font-family: var(--display);
+  font-size: clamp(36px, 4.4vw, 52px);
+  line-height: 1.05;
+  color: var(--text);
+}
+
+.resume-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 30px;
+  background: var(--text-strong);
+  color: var(--bg);
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-decoration: none;
+  transition: all .3s ease;
+
+  &:hover {
+    background: var(--white);
+    color: var(--bg);
+  }
+}

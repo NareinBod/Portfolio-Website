@@ -1,0 +1,48 @@
+:host {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.dock {
+  pointer-events: auto;
+  box-sizing: border-box;
+  width: min(88vw, 248px);
+  margin-bottom: max(12px, env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 6px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-dock);
+  background: rgba(17, 17, 17, .88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .55);
+}
+
+.dock-btn {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-strong);
+  background: transparent;
+  transition: all .35s cubic-bezier(.2, .8, .2, 1);
+
+  &:hover {
+    transform: translateY(-4px) scale(1.1);
+    color: var(--text-strong);
+  }
+
+  &.active {
+    background: var(--text-strong);
+    color: var(--bg);
+  }
+}

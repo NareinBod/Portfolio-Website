@@ -1,1 +1,150 @@
-<footer class="contact" appScrollReveal><div><p class="section-kicker">Contact / open to opportunities</p><h2>Let’s make<br>something <em>useful.</em></h2><p>I am currently seeking Spring and Summer 2027 software engineering internship opportunities.</p></div><div class="contact-links"><a class="email" href="mailto:boddapnn&#64;mail.uc.edu">boddapnn&#64;mail.uc.edu <span>↗</span></a><div><a href="https://github.com/NareinBod" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/narein/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="/Narein_Resume_2026.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a></div><small>© 2026 Narein Boddapati</small></div></footer>
+<footer class="contact-section" aria-labelledby="contact-heading">
+  <div class="contact-inner">
+
+    <!-- Section label -->
+    <div class="section-label">
+      <span aria-hidden="true"></span>
+      <span>V · CONTACT</span>
+      <span aria-hidden="true"></span>
+    </div>
+
+    <!-- Giant heading -->
+    <h2 id="contact-heading" class="contact-h2">Say <em>hello.</em></h2>
+
+    <p class="contact-blurb">
+      Tell me a bit about you and what you have in mind.
+      Your note lands straight in my inbox.
+    </p>
+
+    <!-- Diamond divider -->
+    <div class="divider" aria-hidden="true">
+      <span class="divider-line"></span>
+      <span class="divider-diamond"></span>
+      <span class="divider-line"></span>
+    </div>
+
+    <!-- Channel links -->
+    <div class="channel-list" aria-label="Contact channels">
+      @for (ch of channels; track ch.label) {
+        <a [href]="ch.href" class="channel-row" target="_blank" rel="noopener noreferrer">
+          <span class="ch-label">{{ ch.label }}</span>
+          <span class="ch-value">{{ ch.value }} <span class="ch-arrow" aria-hidden="true">↗</span></span>
+        </a>
+      }
+    </div>
+
+    <!-- Message card -->
+    <div class="msg-card" role="region" aria-label="Send a message">
+      <!-- Card header -->
+      <div class="msg-header">
+        <span>NEW MESSAGE</span>
+        <span>TO: NAREIN</span>
+      </div>
+
+      <!-- Topic pills -->
+      <div class="topic-group">
+        <span class="field-label">I'M REACHING OUT ABOUT</span>
+        <div class="topics" role="group" aria-label="Message topic">
+          @for (t of topics; track t) {
+            <button
+              type="button"
+              class="topic-pill"
+              [class.active]="topic() === t"
+              (click)="pickTopic(t)"
+              [attr.aria-pressed]="topic() === t"
+            >{{ t }}</button>
+          }
+        </div>
+      </div>
+
+      <!-- Name -->
+      <label class="field">
+        <span class="field-label">YOUR NAME</span>
+        <input
+          type="text"
+          class="field-input"
+          placeholder="Ada Lovelace"
+          [ngModel]="name()"
+          (ngModelChange)="name.set($event)"
+          autocomplete="name"
+        >
+      </label>
+
+      <!-- Email -->
+      <label class="field">
+        <span class="field-label">EMAIL</span>
+        <input
+          type="email"
+          class="field-input"
+          placeholder="ada@example.com"
+          [ngModel]="email()"
+          (ngModelChange)="email.set($event)"
+          autocomplete="email"
+        >
+      </label>
+
+      <!-- Message -->
+      <label class="field">
+        <span class="field-label field-label-row">
+          <span>MESSAGE</span>
+          <span aria-live="polite">{{ msgCount }}/600</span>
+        </span>
+        <textarea
+          class="field-input"
+          placeholder="What are you working on?"
+          rows="5"
+          maxlength="600"
+          [ngModel]="message()"
+          (ngModelChange)="message.set($event)"
+        ></textarea>
+      </label>
+
+      <!-- Honeypot (hidden from users) -->
+      <input
+        type="text"
+        name="website"
+        tabindex="-1"
+        autocomplete="off"
+        aria-hidden="true"
+        style="position:absolute;left:-9999px;opacity:0;pointer-events:none"
+        value=""
+      >
+
+      <!-- Footer -->
+      <div class="msg-footer">
+        <span class="msg-status" [class.has-error]="!!status()" aria-live="polite" role="alert">
+          {{ status() }}
+        </span>
+        <button
+          type="button"
+          class="send-btn"
+          [disabled]="sending()"
+          (click)="send()"
+        >
+          {{ sending() ? 'Sending…' : 'Send message →' }}
+        </button>
+      </div>
+
+      <!-- Success overlay -->
+      <div
+        class="sent-overlay"
+        [class.visible]="sent()"
+        role="status"
+        aria-live="polite"
+        [attr.aria-hidden]="!sent()"
+      >
+        <div class="sent-word">Sent.</div>
+        <div class="sent-sub">Thanks — I'll reply soon.</div>
+        <button type="button" class="write-another" (click)="reset()">
+          Write another
+        </button>
+      </div>
+    </div><!-- /msg-card -->
+
+    <!-- Footer line -->
+    <div class="copyright">
+      <span>© 2026 NAREIN BODDAPATI</span>
+    </div>
+
+  </div>
+</footer>
