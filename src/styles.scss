@@ -63,6 +63,16 @@ button, input, textarea {
 }
 
 /* ─── Shared section-label pattern ──────────────────────────────────── */
+/*
+ * Structure: <div class="section-label">
+ *   <span aria-hidden="true"></span>   ← decorative line
+ *   <span>LABEL TEXT</span>            ← text — must NOT get line styles
+ *   <span aria-hidden="true"></span>   ← decorative line
+ * </div>
+ *
+ * Only :first-child / :last-child get the line treatment.
+ * The middle span is sized by its content and never wraps.
+ */
 .section-label {
   display: flex;
   align-items: center;
@@ -73,13 +83,30 @@ button, input, textarea {
   font-size: 12px;
   letter-spacing: .22em;
   color: var(--white);
+  white-space: nowrap; /* keep label on one line at all widths */
 
-  span {
+  /* Decorative side lines — first and last span only */
+  span:first-child,
+  span:last-child {
     display: block;
-    width: 40px;
+    flex: 0 0 32px;   /* fixed, won't grow or shrink */
     height: 1px;
     background: var(--white);
-    flex-shrink: 0;
+  }
+
+  /* Text span — auto width, centred */
+  span:not(:first-child):not(:last-child) {
+    flex: 0 1 auto;
+  }
+
+  /* On very narrow screens, shorten the side lines instead of dropping them */
+  @media (max-width: 380px) {
+    gap: 10px;
+
+    span:first-child,
+    span:last-child {
+      flex-basis: 18px;
+    }
   }
 }
 
