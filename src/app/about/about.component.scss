@@ -39,46 +39,197 @@
   text-wrap: pretty;
 }
 
-/* ── Experience ─────────────────────────────────────────────────── */
+/* ── Experience — accordion list ────────────────────────────────── */
 .exp-list {
-  width: 100%;
-  border-top: 1px solid var(--border);
-}
-
-.exp-row {
   display: flex;
   flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  max-width: 760px;
+}
+
+/* Each accordion item */
+.exp-item {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* ── Row header (the button) ─────────────────────────────────────── */
+.exp-header {
+  /* Reset button */
+  all: unset;
+  box-sizing: border-box;
+
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 16px 14px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background .3s ease;
+
+  &:hover,
+  &.is-open {
+    background: var(--surface);
+
+    .exp-chevron {
+      opacity: 1;
+    }
+  }
+
+  /* Always show chevron on touch/pointer:coarse */
+  @media (pointer: coarse) {
+    .exp-chevron { opacity: 1; }
+  }
+}
+
+/* ── Circular logo ───────────────────────────────────────────────── */
+.exp-logo {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--text-strong);
+  overflow: hidden;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 36px 16px;
-  border-bottom: 1px solid var(--border);
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8px;
+  }
+}
+
+/* ── Right-side meta ─────────────────────────────────────────────── */
+.exp-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.exp-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 6px 16px;
+  flex-wrap: wrap;
+}
+
+.exp-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.exp-org {
+  font-family: var(--display);
+  font-size: 26px;
+  line-height: 1.1;
+  color: var(--text-strong);
+}
+
+.exp-role {
+  font-size: 15px;
+  color: var(--secondary);
 }
 
 .exp-when {
   font-family: var(--mono);
   font-size: 12px;
-  letter-spacing: .2em;
-  color: var(--white);
+  letter-spacing: .12em;
+  color: var(--muted);
+  padding-top: 6px;
+  white-space: nowrap;
 }
 
-.exp-role {
-  font-family: var(--display);
-  font-size: 32px;
-  color: var(--text-strong);
+/* ── Chevron ─────────────────────────────────────────────────────── */
+.exp-chevron {
+  flex: none;
+  align-self: center;
+  opacity: 0;
+  transition:
+    transform .35s cubic-bezier(.2, .8, .2, 1),
+    opacity .25s ease;
 
-  em {
-    font-style: italic;
-    color: var(--white);
+  &.open {
+    transform: rotate(180deg);
+    opacity: 1;
   }
 }
 
+/* ── Expandable detail panel ─────────────────────────────────────── */
+.exp-detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .4s cubic-bezier(.2, .8, .2, 1);
+  padding: 0 14px;
+
+  &.is-open {
+    grid-template-rows: 1fr;
+  }
+}
+
+.exp-detail-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Content inside the expanded panel */
+.exp-detail-inner > * {
+  /* top padding only on the first child */
+}
+
 .exp-desc {
-  margin: 0;
-  color: var(--muted);
+  margin: 16px 0 0;
+  color: var(--secondary);
   line-height: 1.6;
-  max-width: 520px;
-  font-size: 17px;
+  font-size: 15px;
   text-wrap: pretty;
+  padding-left: 70px; /* aligns with text column (52px logo + 18px gap) */
+}
+
+.exp-points {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0 0 0 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  li {
+    display: flex;
+    gap: 12px;
+    color: var(--muted);
+    line-height: 1.55;
+    font-size: 15px;
+    text-wrap: pretty;
+  }
+
+  .bullet-dash {
+    color: var(--text-strong);
+    flex-shrink: 0;
+  }
+}
+
+.exp-tools {
+  margin: 10px 0 16px;
+  padding-left: 70px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .06em;
+  color: var(--muted);
+}
+
+/* Responsive: collapse logo indent on narrow screens */
+@media (max-width: 480px) {
+  .exp-desc,
+  .exp-points,
+  .exp-tools {
+    padding-left: 0;
+  }
 }
 
 /* ── Skills ─────────────────────────────────────────────────────── */

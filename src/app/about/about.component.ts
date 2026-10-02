@@ -1,15 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 interface ExperienceItem {
-  when: string;
-  role: string;
-  org: string;
-  desc: string;
-}
-
-interface SkillGroup {
-  label: string;
-  skills: string[];
+  org:    string;
+  role:   string;
+  when:   string;
+  logo:   string;
+  desc:   string;
+  points: string[];
+  tools:  string;
 }
 
 @Component({
@@ -19,24 +17,51 @@ interface SkillGroup {
   styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent {
+  /** Index of the currently-open experience row; -1 = none */
+  readonly open = signal(-1);
+
+  toggle(i: number): void {
+    this.open.set(this.open() === i ? -1 : i);
+  }
+
   readonly experiences: ExperienceItem[] = [
     {
-      when: 'AUG — DEC 2025',
-      role: 'Computer Vision Research Assistant',
-      org: 'Feng Chia University',
-      desc: 'Fine-tuned a Vision Transformer on a 38-class plant disease task and built an end-to-end PyTorch / Hugging Face pipeline, improving robustness through systematic error analysis.',
+      org:   'Feng Chia University',
+      role:  'Computer Vision Research Assistant',
+      when:  'Aug – Dec 2025',
+      logo:  '/feng_chia.png',
+      desc:  'Research on plant disease recognition with Vision Transformers.',
+      points: [
+        'Fine-tuned a Vision Transformer on a 38-class plant disease classification task.',
+        'Built an end-to-end PyTorch / Hugging Face training and evaluation pipeline.',
+        'Improved model robustness through systematic error analysis.',
+      ],
+      tools: 'PyTorch · Hugging Face · Vision Transformers',
     },
     {
-      when: 'MAY — AUG 2025',
-      role: 'Digital Technology Solutions Intern',
-      org: 'University of Cincinnati',
-      desc: 'Validated a production Angular app against CAD plans, built reusable MapsIndoors UI components, and provided third-level production support in Agile.',
+      org:   'University of Cincinnati',
+      role:  'Digital Technology Solutions Intern',
+      when:  'May – Aug 2025',
+      logo:  '/dts.png',
+      desc:  'Worked on a production Angular application in an Agile team.',
+      points: [
+        'Validated the application against CAD plans.',
+        'Built reusable MapsIndoors UI components.',
+        'Provided third-level production support.',
+      ],
+      tools: 'Angular · MapsIndoors · Agile',
     },
     {
-      when: 'JAN — APR 2025',
-      role: 'Software Applications Intern',
-      org: 'Danlaw',
-      desc: 'Shipped pages and features for a production Angular app and authored OpenAPI documentation for internal APIs.',
+      org:   'Danlaw',
+      role:  'Software Applications Intern',
+      when:  'Jan – Apr 2025',
+      logo:  '/danlaw.png',
+      desc:  'Contributed to a production Angular application.',
+      points: [
+        'Shipped pages and features for the production app.',
+        'Authored OpenAPI documentation for internal APIs.',
+      ],
+      tools: 'Angular · OpenAPI',
     },
   ];
 

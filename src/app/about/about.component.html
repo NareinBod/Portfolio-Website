@@ -27,13 +27,72 @@
     <span aria-hidden="true"></span>
   </div>
 
-  <div class="exp-list" aria-label="Professional experience">
-    @for (item of experiences; track item.role) {
-      <article class="exp-row">
-        <span class="exp-when">{{ item.when }}</span>
-        <div class="exp-role">{{ item.role }} <em>· {{ item.org }}</em></div>
-        <p class="exp-desc">{{ item.desc }}</p>
-      </article>
+  <div class="exp-list" role="list" aria-label="Professional experience">
+    @for (item of experiences; track item.org; let i = $index) {
+      <div class="exp-item" role="listitem">
+
+        <!-- Clickable row header (button for a11y) -->
+        <button
+          class="exp-header"
+          [class.is-open]="open() === i"
+          (click)="toggle(i)"
+          [attr.aria-expanded]="open() === i"
+          [attr.aria-controls]="'exp-detail-' + i"
+        >
+          <!-- Circular logo -->
+          <div class="exp-logo" aria-hidden="true">
+            <img [src]="item.logo" [alt]="item.org + ' logo'" loading="lazy">
+          </div>
+
+          <!-- Org / role / date -->
+          <div class="exp-meta">
+            <div class="exp-top">
+              <div class="exp-title-group">
+                <span class="exp-org">{{ item.org }}</span>
+                <span class="exp-role">{{ item.role }}</span>
+              </div>
+              <span class="exp-when">{{ item.when }}</span>
+            </div>
+          </div>
+
+          <!-- Chevron -->
+          <svg
+            class="exp-chevron"
+            [class.open]="open() === i"
+            width="16" height="16" viewBox="0 0 24 24"
+            fill="none" stroke="#a3a3a3"
+            stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </button>
+
+        <!-- Expandable detail panel (CSS grid height animation) -->
+        <div
+          class="exp-detail"
+          [id]="'exp-detail-' + i"
+          [class.is-open]="open() === i"
+          role="region"
+          [attr.aria-labelledby]="'exp-header-' + i"
+        >
+          <div class="exp-detail-inner">
+            <p class="exp-desc">{{ item.desc }}</p>
+
+            <ul class="exp-points" aria-label="Key contributions">
+              @for (point of item.points; track point) {
+                <li>
+                  <span class="bullet-dash" aria-hidden="true">–</span>
+                  <span>{{ point }}</span>
+                </li>
+              }
+            </ul>
+
+            <div class="exp-tools">{{ item.tools }}</div>
+          </div>
+        </div>
+
+      </div>
     }
   </div>
 </section>
